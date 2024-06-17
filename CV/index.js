@@ -5,9 +5,11 @@ async function incrementAndSetVisitors() {
       method: "POST",
     }
   );
-  const text = await response.text();
+  const responseText = await response.text();
+  const parsedResponse = JSON.parse(responseText);
+  const newVisitors = parsedResponse.new_visitors;
 
-  document.getElementById("count").innerHTML = text;
+  document.getElementById("count").innerHTML = newVisitors;
 }
 
 incrementAndSetVisitors();
